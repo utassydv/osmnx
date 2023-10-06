@@ -315,7 +315,8 @@ def _download_overpass_network(polygon, network_type, custom_filter):
     # pass exterior coordinates of each polygon in list to API, one at a time
     # the '>' makes it recurse so we get ways and the ways' nodes.
     for polygon_coord_str in polygon_coord_strs:
-        query_str = f"{overpass_settings};(way{osm_filter}(poly:{polygon_coord_str!r});>;);out;"
+        query_str = f"{overpass_settings};(way{osm_filter}(poly:{polygon_coord_str!r});>;);out skel;"
+
         yield _overpass_request(data={"data": query_str})
 
 
